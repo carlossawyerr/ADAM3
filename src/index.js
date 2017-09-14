@@ -4,5 +4,9 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+
+var finalSumProduct = "$325,8094,904"
+
+ReactDOM.render(<App msg="Total Dollars : " finalSumProduct={finalSumProduct} hitComponent={this.hitComponent}/>, document.getElementById('root'));
 registerServiceWorker();

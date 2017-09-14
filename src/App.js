@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import {
   InstantSearch,
   SearchBox,
@@ -14,46 +15,80 @@ import {
 
 } from 'react-instantsearch/dom';
 
+import {orderBy} from 'lodash';
+
 import {
   connectSearchBox,
   connectRefinementList,
   connectHits,
 } from 'react-instantsearch/connectors';
 
+
+
 const Hit=({hit}) =>
+
   <div className = "hit">
+
     <div className = "hit-image">
-      <img src = {hit.Image}/>
+      <img src = {hit.IMAGE}/>
     </div>
     <div className = "hit-content">
       <div className = "hit-name">
-        <Highlight attributeName = "Brand.name" hit={hit}/>
+        <strong>{hit.assortment_class}</strong>
+      </div>
+      <div className = "hit-it">
+        <img src = {hit.it_checkmark_url}/>
       </div>
       <div className = "hit-price">
-        ${hit.Price}
+        <strong>Brand:</strong> {hit.Brand}
       </div>
-      <div className = "hit-description">
-        <Highlight attributeName = "Name" hit={hit}/>
+      <div className = "hit-price">
+        <strong>PID:</strong> {hit.PID}
       </div>
-      <div className = "hit-description">
-        <Highlight attributeName = "Description" hit={hit}/>
+      <div className = "hit-price">
+        <strong>COLOR:</strong> {hit.COLOR}
       </div>
-      <div className = "hit-description">
-        <Highlight attributeName = "Brand.name" hit={hit}/>
+      <div className = "hit-price">
+        <strong>AUR:</strong> {hit.AUR}
+      </div>
+      <div className = "hit-price">
+        <strong>FC:</strong> {hit.ticketed_retail}
+      </div>
+      <div className = "hit-price">
+        <strong>Depth Units:</strong> {hit.Buy_Quantities}
+      </div>
+      <div className = "hit-recommended">
+        <strong>{hit.Recommended}</strong>
       </div>
     </div>
   </div>
 
+
 const Sidebar = () =>
-  <div id="left-column" >
-    <h5>Category</h5>
-      <RefinementList attributeName = "Category"/>
-    <h5>Brand</h5>
-      <RefinementList attributeName = "Brand.name"/>
-    <h5>Color</h5>
-      <RefinementList attributeName = "Color"/>
-    <h5>Price</h5>
-      <RangeInput attributeName = "Price"/>
+  <div id="left-column">
+    <h5>Year</h5>
+      <RefinementList attributeName = "Year"/>
+    <h5>Season</h5>
+      <RefinementList attributeName = "Season Name"
+        transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
+    <h5>Period</h5>
+      <RefinementList attributeName= "Period"
+      transformItems={items => orderBy(items, ['label'], ['asc'])}/>
+    <h5>FOB</h5>
+      <RefinementList attributeName = "GMM"
+      transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
+    <h5>Division</h5>
+      <RefinementList attributeName = "DIV"
+      transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
+    <h5>Dept</h5>
+      <RefinementList attributeName = "DEPT"
+      transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
+    <h5>Product Type</h5>
+      <RefinementList attributeName = "PRODUCT_TYPE_NAME"
+      transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
+    <h5>Item Type</h5>
+      <RefinementList attributeName = "assortment_class"
+      transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
   </div>
 
 const Content  = () =>
@@ -61,14 +96,11 @@ const Content  = () =>
     <div>
       <Stats/>
       <SortBy
-        defaultRefinement="Macys3"
+        defaultRefinement="Alfani"
         items = {[
-        {value: 'Macys3', label:'Lowest Price'}
-
-
+        {value: 'Alfani', label:'Highest Recommended Depth'}
         ]}
       />
-
     </div>
     <Hits hitComponent = {Hit}/>
     <div id = "pagination" >
@@ -77,26 +109,28 @@ const Content  = () =>
   </div>
 
 class App extends Component {
+
+
   render(){
     return(
         <InstantSearch
-        apiKey="7e62c5ec4629b1a87c1b39941c59d945"
-        appId="EWPB15349S"
-        indexName="Macys3">
+          apiKey="efbad3c0cb07be75c7a7fb5423c7d045"
+          appId="DTZFN27JAW"
+          indexName="Alfani">
         <header id="header">
      <img alt="instant-search-logo" src="macys.png"/>
           <SearchBox translations = {{placeholder:"Search"}}/>
         </header>
         <main>
+
         <div>
           <Sidebar/>
-          <Content/>
+          <Content contentmsg={this.hitComponent}/>
         </div>
         </main>
         </InstantSearch>
       );
   }
 }
-
 
 export default App
