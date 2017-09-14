@@ -1,0 +1,110 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+
+const SumProduct = React.createClass({
+  render : function(){
+    return(
+    <div>
+    <p>{this.props.msg}</p>
+    <p>{this.props.totalUnits.price * this.props.totalUnits.units} </p>
+    <p>{this.props.sumproduct1}</p>
+    <p>{this.props.sumproduct2}</p>
+    <p>{this.props.sumproduct3}</p>
+    </div>
+    )
+  }
+})
+
+var totalUnits = {price : 500, units : 10};
+var totalUnits2 = [2,3,4,5,6];
+
+
+var object1 = {
+  units : 2,
+  dollars : 4
+}
+
+var object2 = {
+  units : 3,
+  dollars : 3
+}
+
+var object3 = {
+  units : 4,
+  dollars : 3
+}
+
+var object4 = {
+  units : 5,
+  dollars : 1
+}
+
+var hits =
+[
+
+{
+  units : 2,
+  dollars : 4
+},
+
+{
+  units : 3,
+  dollars : 3
+},
+
+{
+  units : 4,
+  dollars : 3
+},
+
+{
+  units : 5,
+  dollars : 1
+}
+]
+
+
+//complexity 1
+var arr1 = [2,3,4,5];
+var arr2 = [4,3,3,1];
+var sum1 = 0;
+for (var i=0;i<arr1.length;i++){
+  sum1 += arr1[i]*arr2[i];
+}
+
+//complexity 2
+var arrA = [];
+var arrB = [];
+
+arrA.push(object1.units,object2.units,object3.units,object4.units);
+arrB.push(object1.dollars,object2.dollars,object3.dollars,object4.dollars);
+var sum2 = 0;
+for (var i=0;i<arrA.length;i++){
+  sum2 += arrA[i]*arrB[i];
+}
+//complexity 3
+var arrX = [];
+var arrY = [];
+
+for(var i=0; i<hits.length ; i++){
+  arrX.push(hits[i].units);
+}
+
+for(var j=0; j<hits.length ; j++){
+  arrY.push(hits[j].dollars);
+}
+
+var sum3 = 0;
+for (var i=0;i<arrX.length;i++){
+  sum3 += arrX[i]*arrY[i];
+}
+
+
+
+ReactDOM.render(<SumProduct msg="Total Dollars" totalUnits={totalUnits} totalUnits2={totalUnits2}  sumproduct1={sum1} sumproduct2 = {sum2} hits={hits} arrX={arrX} sumproduct3={sum3}/>,document.getElementById('root2') )
+
+
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();
