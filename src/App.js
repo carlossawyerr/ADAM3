@@ -55,11 +55,12 @@ const Hit=({hit}) =>
         <strong>FC:</strong> {hit.ticketed_retail}
       </div>
       <div className = "hit-price">
-        <strong>Depth Units:</strong> {hit.Buy_Quantities}
+        <strong>Depth Units:</strong>{hit.Buy_Quantities}
       </div>
       <div className = "hit-recommended">
         <strong>{hit.Recommended}</strong>
       </div>
+
     </div>
   </div>
 
@@ -71,24 +72,37 @@ const Sidebar = () =>
     <h5>Season</h5>
       <RefinementList attributeName = "Season Name"
         transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
-    <h5>Period</h5>
-      <RefinementList attributeName= "Period"
+    <span><h5>Receipt Month (On the floor)</h5></span>
+      <RefinementList attributeName= "Month"
       transformItems={items => orderBy(items, ['label'], ['asc'])}/>
+
     <h5>FOB</h5>
       <RefinementList attributeName = "GMM"
       transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
-    <h5>Division</h5>
+    <h5>Div</h5>
       <RefinementList attributeName = "DIV"
       transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
-    <h5>Dept</h5>
+    <h5>Departments</h5>
       <RefinementList attributeName = "DEPT"
       transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
-    <h5>Product Type</h5>
+      <h5>Brand</h5>
+        <RefinementList attributeName = "Brand"
+        transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
+    <h5>Product</h5>
       <RefinementList attributeName = "PRODUCT_TYPE_NAME"
       transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
     <h5>Item Type</h5>
       <RefinementList attributeName = "assortment_class"
+      transformItems={items => orderBy(items, ['label', 'count'], ['desc', 'asc'])}/>
+    <h5>Lifestyle</h5>
+      <RefinementList attributeName = "Lifestyle"
       transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
+    <h5>Store Clusters</h5>
+      <RefinementList attributeName = "Stores"
+      transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
+    <h5>Store Number</h5>
+        <RefinementList attributeName = "Stores2"
+        transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
   </div>
 
 const Content  = () =>
@@ -119,6 +133,7 @@ class App extends Component {
           indexName="Alfani">
         <header id="header">
      <img alt="instant-search-logo" src="macys.png"/>
+
           <SearchBox translations = {{placeholder:"Search"}}/>
         </header>
         <main>

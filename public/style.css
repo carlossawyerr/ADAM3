@@ -162,10 +162,10 @@ main {
 
 .hit-it img{
   float: right;
-  max-width: 15px;
-  max-height:15px;
+  max-width: 25px;
+  max-height:25px;
   display: block;
-  margin: -50px 20 20 -10px;
+  margin-bottom:-50px;
 }
 .hit-name {
     float: left;
