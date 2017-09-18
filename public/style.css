@@ -40,8 +40,8 @@ main {
     top: 9px;
     left: 0;
     float: left;
-    max-width: 45%;
-    max-height: 91%;
+    max-width: 35%;
+    max-height: 75%;
 }
 
 #header .ais-SearchBox__root {

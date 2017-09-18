@@ -94,7 +94,7 @@ const Sidebar = () =>
     <h5>Item Type</h5>
       <RefinementList attributeName = "assortment_class_name"
       transformItems={items => orderBy(items, ['label', 'count'], ['desc', 'asc'])}/>
-    <h5>Lifestyle</h5>// XXX:
+    <h5>Lifestyle</h5>
       <RefinementList attributeName = "Lifestyle"
       transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
     <h5>Store Clusters</h5>
@@ -134,8 +134,8 @@ class App extends Component {
           appId="DTZFN27JAW"
           indexName="Alfani">
         <header id="header">
-        <img alt="instant-search-logo" src="macys.png"/>
-
+        <img alt="instant-search-logo" src="https://image.ibb.co/hccoZQ/Macys_Logo.jpg"/>
+        
           <SearchBox translations = {{placeholder:"Search"}}/>
         </header>
         <main>
