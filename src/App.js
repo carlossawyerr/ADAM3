@@ -112,9 +112,9 @@ const Content  = () =>
 
       <Stats/>
       <SortBy
-        defaultRefinement="Alfani"
+        defaultRefinement="Alfani2"
         items = {[
-        {value: 'Alfani', label:'Highest Recommended Depth'}
+        {value: 'Alfani2', label:'Highest Recommended Depth'}
         ]}
       />
     </div>
@@ -132,10 +132,10 @@ class App extends Component {
         <InstantSearch
           apiKey="efbad3c0cb07be75c7a7fb5423c7d045"
           appId="DTZFN27JAW"
-          indexName="Alfani">
+          indexName="Alfani2">
         <header id="header">
         <img alt="instant-search-logo" src="https://image.ibb.co/hccoZQ/Macys_Logo.jpg"/>
-        
+
           <SearchBox translations = {{placeholder:"Search"}}/>
         </header>
         <main>
