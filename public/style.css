@@ -159,14 +159,14 @@ main {
     text-align: center;
 }
 
-
-.hit-it img{
+.hit-name img{
   float: right;
-  max-width: 25px;
+  max-width: 40px;
   max-height:25px;
   display: block;
-  margin-bottom:-50px;
+  margin-left:-5px;
 }
+
 .hit-name {
     float: left;
     margin-left: 20px;
@@ -176,6 +176,17 @@ main {
     padding : 2px;
     color: #ed5565;
 }
+
+
+.hit-it img{
+  float: right;
+  max-width: 25px;
+  max-height:25px;
+  display: block;
+  margin-bottom:-50px;
+}
+
+
 .hit-content em {
     font-style: normal;
     background: #fbdde0;
@@ -249,7 +260,7 @@ main {
 }
 
 .ais-Stats__root {
-    align-self: center;
+    align-self: right;
 }
 
 .ais-SortBy__root {
@@ -258,6 +269,15 @@ main {
     font-weight: 300;
     color: #999;
     font-size: 14px;
+}
+
+.slogan {
+    box-shadow: none;
+    border: none;
+    font-weight: 500;
+
+    font-size: 16px;
+    margin-bottom: 15px;
 }
 
 /* FACETS */

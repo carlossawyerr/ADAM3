@@ -34,7 +34,7 @@ const Hit=({hit}) =>
     </div>
     <div className = "hit-content">
       <div className = "hit-name">
-        <strong>{hit.assortment_class}</strong>
+        <img src = {hit.assortment_class}/>
       </div>
       <div className = "hit-it">
         <img src = {hit.it_checkmark_url}/>
@@ -55,7 +55,7 @@ const Hit=({hit}) =>
         <strong>FC:</strong> {hit.ticketed_retail}
       </div>
       <div className = "hit-price">
-        <strong>Depth Units:</strong>{hit.Buy_Quantities}
+        <strong>Depth Units: </strong>{hit.Buy_Quantities}
       </div>
       <div className = "hit-recommended">
         <strong>{hit.Recommended}</strong>
@@ -92,22 +92,24 @@ const Sidebar = () =>
       <RefinementList attributeName = "PRODUCT_TYPE_NAME"
       transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
     <h5>Item Type</h5>
-      <RefinementList attributeName = "assortment_class"
+      <RefinementList attributeName = "assortment_class_name"
       transformItems={items => orderBy(items, ['label', 'count'], ['desc', 'asc'])}/>
-    <h5>Lifestyle</h5>
+    <h5>Lifestyle</h5>// XXX:
       <RefinementList attributeName = "Lifestyle"
       transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
     <h5>Store Clusters</h5>
       <RefinementList attributeName = "Stores"
       transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
     <h5>Store Number</h5>
-        <RefinementList attributeName = "Stores2"
+        <RefinementList attributeName = "Stores_2"
         transformItems={items => orderBy(items, ['label', 'count'], ['asc', 'desc'])}/>
   </div>
 
 const Content  = () =>
   <div id ="right-column">
+    <div className="slogan">Conceptual Assortment Planning Tool</div>
     <div>
+
       <Stats/>
       <SortBy
         defaultRefinement="Alfani"
@@ -132,15 +134,15 @@ class App extends Component {
           appId="DTZFN27JAW"
           indexName="Alfani">
         <header id="header">
-     <img alt="instant-search-logo" src="macys.png"/>
+        <img alt="instant-search-logo" src="macys.png"/>
 
           <SearchBox translations = {{placeholder:"Search"}}/>
         </header>
         <main>
-
         <div>
           <Sidebar/>
           <Content contentmsg={this.hitComponent}/>
+
         </div>
         </main>
         </InstantSearch>
